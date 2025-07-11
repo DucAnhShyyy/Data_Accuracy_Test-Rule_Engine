@@ -9,12 +9,57 @@ function TableInputForm() {
     const [customer_since, setCusS] = useState('');
     const [expires_end, setExpEnd] = useState('');
 
+    // Check validation first then submit
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const dataToSend = {age_from, age_to, phone, email, customer_since, expires_end};
-        console.log('Sending...', dataToSend);
+
+        let response;
+
+        // Check format
+        const dataToValidate = {email, phone};
+        console.log('Validating...', dataToValidate);
 
         try {
+            const validationResponse = await fetch('http://localhost:5000/validation/check-format', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToValidate),
+            });
+
+            if (!validationResponse.ok) {
+                const errorData = await validationResponse.json();
+                alert('Server cannot validate format: ${errorData.error || validationResponse.statusText}');
+                console.error('Error feedback from Validation API', errorData)
+                return; // Stop if cannot validate format
+            }
+
+            const validationResults = await validationResponse.json();
+            console.log('Validation Results:', validationResults);
+
+            let validationFailed = false;
+            let errorMessage = '';
+        
+            if (!validationResults.email_valid) {
+                errorMessage += validationResults.email_message + '\n';
+                validationFailed = true;
+            }
+
+            if (!validationResults.phone_number_valid) {
+                errorMessage += validationResults.phone_number_message + '\n';
+                validationFailed = true;
+            }
+
+            if (validationFailed) {
+                alert('Please check information:\n' + errorMessage);
+                return; // Stop if wrong format
+            }
+
+            // Submit after checking validation
+            const dataToSend = {age_from, age_to, phone, email, customer_since, expires_end};
+            console.log('Format valid, sending...', dataToSend);
+
             const response = await fetch('http://localhost:5000/api/save-data', {
                 method: 'POST',
                 headers: {
@@ -32,11 +77,17 @@ function TableInputForm() {
                 setCusS('');
                 setExpEnd('');
             } else {
-                alert('Something went wrong when searching');
+                const errorData = await response.json();
+                alert('Something went wrong when searching: ${errorData.error || response.statusText}');
+                console.error('Error response from API save data:', errorData);
             }
         } catch (error) {
-            console.log.error('Error when sending data:', error);
-            alert('Cannot connect to server');
+            console.error('Error connecting or sending data:', error);
+            if (error instanceof TypeError && error.message.includes("Failed  to fetch")) {
+                alert('Cannot connect to server or something wrong');
+            } else {
+                alert('Something wrong when handling data')
+            }
         }
     };
 
