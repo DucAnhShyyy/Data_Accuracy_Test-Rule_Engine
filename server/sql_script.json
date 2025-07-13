@@ -5,33 +5,31 @@
       {
         "field": "age",
         "column": "customer_age",
-        "sql": "SELECT CASE WHEN customer_age BETWEEN 18 AND 100 THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+        "sql": "SELECT CASE WHEN customer_age BETWEEN 123 AND 1231231 THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+      },
+      {
+        "field": "balance",
+        "column": "account_balance",
+        "sql": "SELECT CASE WHEN account_balance BETWEEN 123 AND 1231231231 THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+      },
+      {
+        "field": "transaction_amount",
+        "column": "transaction_amount",
+        "sql": "SELECT CASE WHEN transaction_amount BETWEEN 1000 AND 100000 THEN 'PASS' ELSE 'FAIL' END AS validation_result"
       }
     ],
     "regex_template_scripts": [
       {
-        "field": "phone",
-        "column": "phone_number",
-        "pattern": "0981126895",
-        "sql": "SELECT CASE WHEN phone_number ~ '0981126895' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
-      },
-      {
-        "field": "email",
-        "column": "email_address",
-        "pattern": "thethinh2004@gmail.com",
-        "sql": "SELECT CASE WHEN email_address ~ 'thethinh2004@gmail.com' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
-      },
-      {
         "field": "ssn_format",
         "column": "ssn",
-        "pattern": "12134123",
-        "sql": "SELECT CASE WHEN ssn ~ '12134123' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+        "pattern": "132123",
+        "sql": "SELECT CASE WHEN ssn ~ '132123' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
       },
       {
-        "field": "transaction_id_format",
-        "column": "transaction_id",
-        "pattern": "1213",
-        "sql": "SELECT CASE WHEN transaction_id ~ '1213' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+        "field": "card_number_format",
+        "column": "card_number",
+        "pattern": "1212123",
+        "sql": "SELECT CASE WHEN card_number ~ '1212123' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
       }
     ],
     "continuity_scripts": [],
@@ -39,16 +37,10 @@
     "statistical_different_scripts": [],
     "category_scripts": [
       {
-        "field": "transaction_type",
-        "column": "transaction_type",
-        "expected_value": "Withdraw",
-        "sql": "SELECT CASE WHEN transaction_type = 'Withdraw' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
-      },
-      {
-        "field": "transaction_status",
-        "column": "transaction_status",
-        "expected_value": "Completed",
-        "sql": "SELECT CASE WHEN transaction_status = 'Completed' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
+        "field": "account_type",
+        "column": "account_type",
+        "expected_value": "Checking Account",
+        "sql": "SELECT CASE WHEN account_type = 'Checking Account' THEN 'PASS' ELSE 'FAIL' END AS validation_result"
       }
     ]
   }

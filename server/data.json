@@ -1,10 +1,28 @@
 [
   {
-    "age_from": "18",
-    "age_to": "68",
-    "phone": "0981126895",
-    "email": "thethinh2004@gmail.com",
-    "customer_since": "",
-    "expires_end": ""
+    "value_range": {
+      "age": {
+        "from": "123",
+        "to": "1231231"
+      },
+      "balance": {
+        "from": "123",
+        "to": "1231231231"
+      },
+      "transaction_amount": {
+        "from": "1000",
+        "to": "100000"
+      }
+    },
+    "regex_template": {
+      "ssn_format": "132123",
+      "card_number_format": "1212123"
+    },
+    "continuity": {},
+    "statistical_same": {},
+    "statistical_different": {},
+    "categories": {
+      "account_type": "Checking Account"
+    }
   }
 ]
