@@ -173,6 +173,13 @@ function TableInputForm() {
                     .then(res => res.json())
                     .then(data => {
                         console.log('Đã sinh SQL script:', data.message);
+
+                        // Gọi tiếp endpoint thực thi rule
+                        fetch('http://localhost:5000/execute/run')
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log('Kết quả thực thi rule:', data.message);
+                            });
                     });
 
             } else {
@@ -342,7 +349,6 @@ function TableInputForm() {
                                 <strong>Transaction ID Format</strong><br/>
                                 <input type='text' placeholder='TXN001' value={transaction_id_format} onChange={(e) => setTransactionIdFormat(e.target.value)} />
                             </td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -391,9 +397,12 @@ function TableInputForm() {
                 </table>
             </div>
 
+            {/* Button */}
             <div className='search-btn'>
-                <button type='submit'>Submit</button>
-                <button type='button' onClick={resetForm} style={{marginLeft: '10px'}}>Reset Form</button>
+                <button type='submit'>Search</button>
+            </div>
+            <div className='reset-btn'>
+            <button type='button' onClick={resetForm} style={{marginLeft: '10px'}}>Reset Form</button>
             </div>
         </form>
     );

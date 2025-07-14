@@ -1,0 +1,89 @@
+/* Overlay mờ phủ toàn bộ màn hình */
+#login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.8);
+  z-index: 1000;
+}
+
+#wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  width: 450px;
+  max-width: 95vw;
+  background: #fff;
+  box-shadow: 0 0 20px #000a;
+  border-radius: 12px;
+  padding-bottom: 30px;
+}
+
+#form-login {
+  position: relative;
+  padding: 40px 30px 30px 30px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #222;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #ff5252;
+}
+
+.form-heading {
+  text-align: center;
+  color: #222;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid #222;
+  background: transparent;
+  color: #222;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #888;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  color: #222;
+  border: 2px solid #222;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.form-submit:hover {
+  background: #222;
+  color: #fff;
+}

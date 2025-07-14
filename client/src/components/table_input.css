@@ -1,15 +1,25 @@
 .table-wrap {
   display: block;
-  width: calc(100% - 40px);
-  margin: 20px;
+  width: 100%;
+  margin: 0;
   overflow-x: auto;
 }
 
 .rules-table {
-  display: block;
+  display: table;
   border-collapse: collapse;
-  width: 100%;
   text-align: center;
+  table-layout: fixed;
+  margin: 0;
+}
+
+.rules-table tr {
+  width: 100%;
+}
+
+.rules-table td {
+  width: 20%;
+  word-break: break-word;
 }
 
 .table-head {
@@ -26,7 +36,7 @@
 
 .table-head td,
 .table-body td {
-  padding: 10px 49px;
+  padding: 10px 28px;
   border: solid 1px;
 }
 
@@ -36,18 +46,44 @@
   margin: 20px;
 }
 
-.search-btn button {
+/* button */
+.search-btn button,
+.reset-btn button {
   height: 36px;
-  width: 90px;
+  width: 110px;
   color: #fff;
-  background: #317699;
   background: linear-gradient(270deg, rgba(49, 118, 153, 1) 0%, rgba(38, 189, 38, 1) 100%);
   border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(49, 118, 153, 0.08);
+  transition: background 0.25s, color 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
-.search-btn :hover {
+.search-btn button:hover,
+.reset-btn button:hover {
   cursor: pointer;
-  color: #c4c2c2;
-  background: #21516b;
-  background: linear-gradient(270deg, rgba(33, 81, 107, 1) 0%, rgba(25, 133, 25, 1) 100%);
+  color: #fff;
+  background: linear-gradient(270deg, rgba(38, 189, 38, 1) 0%, rgba(49, 118, 153, 1) 100%);
+  box-shadow: 0 4px 16px rgba(49, 118, 153, 0.18);
+  transform: translateY(-2px) scale(1.04);
+  opacity: 0.95;
+}
+
+.reset-btn button {
+  background: linear-gradient(270deg, #bdbdbd 0%, #757575 100%);
+  color: #fff;
+  margin-left: 10px;
+}
+
+.reset-btn button:hover {
+  background: linear-gradient(270deg, #757575 0%, #bdbdbd 100%);
+  color: #fff;
+}
+
+.reset-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0 0;
 }

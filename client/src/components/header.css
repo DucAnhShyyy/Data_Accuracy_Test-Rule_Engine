@@ -6,7 +6,7 @@
 
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-radius: 5px;
     width: 100%;
@@ -14,4 +14,25 @@
     background: #094893;
     background: linear-gradient(90deg, rgba(9, 72, 147, 1) 0%, rgba(56, 164, 74, 1) 100%);
     color: #fff;
+}
+
+.login-btn {
+    background: #fff;
+    color: #2fb34e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(49, 118, 153, 0.08);
+    transition: background 0.25s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.login-btn:hover {
+    background: linear-gradient(270deg, rgba(38, 189, 38, 1) 0%, rgba(49, 118, 153, 1) 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(49, 118, 153, 0.18);
+    transform: translateY(-2px) scale(1.04);
+    opacity: 0.95;
 }
